@@ -1,0 +1,14 @@
+package ru.yandex.practicum.arhitecture_pro_alexandride.service_a;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+
+@EnableFeignClients
+@SpringBootApplication
+public class ServiceAApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ServiceAApplication.class, args);
+	}
+}
