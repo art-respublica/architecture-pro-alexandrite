@@ -1,0 +1,24 @@
+@startuml
+actor ApiUser
+actor Operator
+participant MES_Front as FR
+participant Redis as RD
+participant RAM_CACHE as CCH
+participant MES_API as MES
+
+ApiUser -> RD: Get data requests
+ApiUser -> MES: Get data requests, cash miss
+MES -> CCH: Get stored in RAM data
+MES -> ApiUser: Prepared response
+MES -> RD: Save data to redis cache
+MES -> CCH: Save data to RAM cache
+
+Operator -> FR: Operator actions
+FR -> RD: Get data requests
+FR -> MES: Get data requests, cash miss
+MES -> CCH: Get stored in RAM data
+MES -> FR: Prepared response
+MES -> RD: Save data to redis cache
+MES -> CCH: Save data to RAM cache
+FR -> Operator: Show result of actions
+@enduml
